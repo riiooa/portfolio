@@ -77,7 +77,7 @@ export default function Navigation() {
         <a
           href="/admin"
           style={{
-            color: 'rgb(253, 252, 252)',
+            color: 'rgb(0, 0, 0)',
             textDecoration: 'none',
             fontSize: '15px',
             letterSpacing: '0.1em',
@@ -85,7 +85,7 @@ export default function Navigation() {
             paddingLeft: '20px',
           }}
         >
-          {/* ADMIN_ */}
+           ADMIN_ 
         </a>
       </div>
     </nav>
