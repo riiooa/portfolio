@@ -1,0 +1,437 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Space+Grotesk:wght@300..700&display=swap');
+
+:root {
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --black: #000000;
+  --white: #ffffff;
+  --gray-950: #080808;
+  --gray-900: #111111;
+  --gray-800: #1c1c1c;
+  --gray-700: #2c2c2c;
+  --gray-600: #3d3d3d;
+  --gray-500: #555555;
+  --gray-400: #888888;
+  --gray-300: #aaaaaa;
+  --gray-200: #cccccc;
+  --gray-100: #e8e8e8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  cursor: none;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+  font-family: var(--font-mono);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Custom Cursor ── */
+.cursor {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background: var(--white);
+  pointer-events: none;
+  z-index: 99999;
+  transition: transform 0.1s ease, opacity 0.1s ease;
+  mix-blend-mode: difference;
+}
+
+.cursor-follower {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,0.4);
+  pointer-events: none;
+  z-index: 99998;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+.cursor.hover-expand {
+  transform: scale(2);
+}
+
+/* ── Binary Canvas Background ── */
+#binary-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+/* ── Water Ripple ── */
+.ripple-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.water-ripple {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  animation: waterRipple 1.2s cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes waterRipple {
+  0% {
+    width: 0px;
+    height: 0px;
+    opacity: 0.6;
+    border-width: 2px;
+  }
+  50% {
+    border-width: 1px;
+    opacity: 0.3;
+  }
+  100% {
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+    border-width: 0.5px;
+  }
+}
+
+.water-ripple-2 {
+  animation: waterRipple 1.6s cubic-bezier(0.2, 0.8, 0.4, 1) 0.1s forwards;
+}
+
+.water-ripple-3 {
+  animation: waterRipple 2s cubic-bezier(0.2, 0.8, 0.4, 1) 0.2s forwards;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 2px;
+}
+::-webkit-scrollbar-track {
+  background: var(--black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gray-700);
+}
+
+/* ── Section Base ── */
+.section {
+  min-height: 100vh;
+  position: relative;
+  z-index: 10;
+}
+
+/* ── Scramble Text ── */
+.scramble-text {
+  display: inline-block;
+  font-family: var(--font-mono);
+}
+
+/* ── 3D Flip Card ── */
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+/* ── Carousel 3D ── */
+.carousel-stage {
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
+/* ── Terminal Cursor ── */
+.terminal-cursor::after {
+  content: '_';
+  animation: blink 1s step-end infinite;
+  color: var(--white);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ── Modal ── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-window {
+  background: var(--gray-950);
+  border: 1px solid var(--gray-700);
+  max-width: 900px;
+  width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--gray-800);
+  background: var(--gray-900);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--gray-400);
+}
+
+.modal-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+/* ── Admin Layout ── */
+.admin-sidebar {
+  width: 240px;
+  background: var(--gray-950);
+  border-right: 1px solid var(--gray-800);
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.admin-content {
+  margin-left: 240px;
+  min-height: 100vh;
+  background: var(--black);
+  padding: 32px;
+}
+
+/* ── Hover States ── */
+a, button, [role="button"] {
+  cursor: none;
+}
+
+.btn-primary {
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 10px 20px;
+  border: none;
+  cursor: none;
+  transition: opacity 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 10px 20px;
+  border: 1px solid var(--gray-600);
+  cursor: none;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.btn-outline:hover {
+  border-color: var(--white);
+}
+
+.input-terminal {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--gray-700);
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 15px;
+  padding: 8px 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input-terminal:focus {
+  border-color: var(--white);
+}
+
+.input-terminal::placeholder {
+  color: var(--gray-600);
+}
+
+/* ── Noise Texture Overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.15;
+}
+
+/* ── Grid Lines ── */
+.grid-lines {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Floating animation ── */
+@keyframes floating {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-15px) rotate(0.5deg); }
+  66% { transform: translateY(-8px) rotate(-0.5deg); }
+}
+
+.floating {
+  animation: floating 7s ease-in-out infinite;
+}
+
+/* ── Tech circuit line animation ── */
+@keyframes circuitGlow {
+  0%, 100% { stroke-opacity: 0.2; }
+  50% { stroke-opacity: 0.8; }
+}
+
+.circuit-line {
+  animation: circuitGlow 3s ease-in-out infinite;
+}
+
+/* ── Section separator ── */
+.section-separator {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  margin: 0;
+}
+
+/* ── Tag/Badge ── */
+.tech-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--gray-900);
+  border: 1px solid var(--gray-700);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--gray-300);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Log entry ── */
+.log-entry {
+  display: grid;
+  grid-template-columns: 140px 120px 1fr;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gray-900);
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .log-entry {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+  
+  .admin-sidebar {
+    width: 100%;
+    min-height: auto;
+    position: relative;
+  }
+  
+  .admin-content {
+    margin-left: 0;
+    padding: 16px;
+  }
+}
+
+/* ------------- */
+/* ── Navigation Links ── */
+.nav-link {
+  font-family: var(--font-mono);
+  /* Ukuran sebelumnya mungkin 11px atau 12px */
+  font-size: 14px; 
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-400);
+  transition: all 0.3s ease;
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--white);
+}
+
+/* Jika Anda ingin memperbesar jarak antar menu agar tidak rapat */
+nav ul {
+  display: flex;
+  gap: 24px; /* Sesuaikan jarak antar menu di sini */
+  list-style: none;
+}
