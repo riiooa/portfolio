@@ -55,8 +55,8 @@ Isi `.env.local` dengan nilai yang sudah didapat:
 NEXT_PUBLIC_SUPABASE_URL=https://xxxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGci...
 SUPABASE_SERVICE_ROLE_KEY=eyJhbGci...
-RESEND_API_KEY=re_M1KGQfTs_N24PrRPZbf3gnZzjTYdRWmuT
-CONTACT_EMAIL=riiooalfandi@gmail.com
+RESEND_API_KEY=re_*********************
+CONTACT_EMAIL=***************@gmail.com
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
