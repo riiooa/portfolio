@@ -5,7 +5,7 @@ import Image from 'next/image'
 import toast from 'react-hot-toast'
 import ScrambleText from '@/components/shared/ScrambleText'
 import type { Profile, AboutContact } from '@/types'
-import profilePhoto from './photoprofile.JPEG' // foto statis, letakkan file di folder ini
+import profilePhoto from './photoprofile.jpeg' // foto statis, letakkan file di folder ini
 
 export default function AdminProfile() {
   const [profile, setProfile] = useState<Partial<Profile>>({})
@@ -202,7 +202,7 @@ export default function AdminProfile() {
                 />
               </div>
               <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.5 }}>
-                Foto diambil dari file statis <code>photoprofile.JPEG</code> di folder ini.
+                Foto diambil dari file statis <code>photoprofile.jpeg</code> di folder ini.
                 Untuk mengganti foto, replace file tersebut langsung di repo lalu deploy ulang —
                 tidak perlu diisi lewat form.
               </div>
