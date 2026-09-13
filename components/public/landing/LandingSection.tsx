@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import ScrambleText from '@/components/shared/ScrambleText'
 import type { Profile } from '@/types'
 
@@ -144,35 +145,17 @@ export default function LandingSection({ profile }: Props) {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
+                position: 'relative',
               }}
             >
-              {profile?.photo_front_url ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={profile.photo_front_url}
-                  alt={name}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(30%)' }}
-                />
-              ) : (
-                <div style={{
-                  width: '100%',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '16px',
-                  color: 'rgba(255,255,255,0.15)',
-                  fontSize: '11px',
-                  letterSpacing: '0.1em',
-                }}>
-                  <div style={{ fontSize: '60px', color: 'rgba(255,255,255,0.08)' }}>◉</div>
-                  PHOTO_PLACEHOLDER
-                  <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.1)' }}>
-                    Upload via Admin panel
-                  </div>
-                </div>
-              )}
+              {/* Foto statis — file ada di /public/images/photoprofile.jpeg */}
+              <Image
+                src="/images/photoprofile.jpeg"
+                alt={name}
+                fill
+                priority
+                style={{ objectFit: 'cover', filter: 'grayscale(30%)' }}
+              />
               {/* Hover hint */}
               <div style={{
                 position: 'absolute',
