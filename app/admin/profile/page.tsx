@@ -1,11 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import toast from 'react-hot-toast'
 import ScrambleText from '@/components/shared/ScrambleText'
 import type { Profile, AboutContact } from '@/types'
-import profilePhoto from './photoprofile.jpeg' // foto statis, letakkan file di folder ini
 
 export default function AdminProfile() {
   const [profile, setProfile] = useState<Partial<Profile>>({})
@@ -182,31 +180,14 @@ export default function AdminProfile() {
             />
           </div>
 
-          {/* PROFILE PHOTO — foto statis, bukan lagi input URL */}
           <div style={{ marginBottom: '20px' }}>
-            <label style={labelStyle}>PROFILE_PHOTO (static file)</label>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <div style={{
-                width: '72px',
-                height: '72px',
-                position: 'relative',
-                border: '1px solid var(--gray-800)',
-                overflow: 'hidden',
-                flexShrink: 0,
-              }}>
-                <Image
-                  src={profilePhoto}
-                  alt="Profile photo"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-              <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', lineHeight: 1.5 }}>
-                Foto diambil dari file statis <code>photoprofile.jpeg</code> di folder ini.
-                Untuk mengganti foto, replace file tersebut langsung di repo lalu deploy ulang —
-                tidak perlu diisi lewat form.
-              </div>
-            </div>
+            <label style={labelStyle}>PHOTO_FRONT_URL (link to your photo)</label>
+            <input
+              style={inputStyle}
+              value={profile.photo_front_url || ''}
+              onChange={e => setProfile(p => ({ ...p, photo_front_url: e.target.value }))}
+              placeholder="https://..."
+            />
           </div>
 
           <div style={{ marginBottom: '24px', padding: '20px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)' }}>
