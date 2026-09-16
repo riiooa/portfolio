@@ -95,7 +95,9 @@ export default function ProjectsSection({ projects }: Props) {
         position: 'relative',
         width: '100%',
         boxSizing: 'border-box',
+        overflowY: 'auto',
         overflowX: 'hidden',
+        scrollbarGutter: 'stable both-edges',
       }}
     >
       <div className="section-separator" style={{ position: 'absolute', top: 0, left: 0, right: 0 }} />
