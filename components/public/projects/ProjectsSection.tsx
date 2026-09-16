@@ -103,13 +103,13 @@ export default function ProjectsSection({ projects }: Props) {
 
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: 'clamp(24px, 4vh, 64px)' }}>
-        <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.2em', marginBottom: '12px' }}>
+        <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.2em', marginBottom: '5px' }}>
           SELECT * FROM projects ORDER BY priority_order ASC
         </div>
-        <h2 style={{ fontSize: 'clamp(28px, 4vw, 64px)', fontWeight: 500, fontFamily: 'var(--font-mono)', margin: 0 }}>
+        <h2 style={{ fontSize: 'clamp(28px, 4vw, 64px)', fontWeight: 700, fontFamily: 'var(--font-mono)', margin: 0 }}>
           <ScrambleText text="THE_VAULT" trigger="always" speed={40} />
         </h2>
-        <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.3)', marginTop: '10px' }}>
+        <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.3)', marginTop: '5px' }}>
           {total} records found // drag or use ← → keys
         </div>
       </div>
@@ -144,7 +144,7 @@ export default function ProjectsSection({ projects }: Props) {
       </div>
 
       {/* Controls */}
-      <div style={{ display: 'flex', gap: '24px', alignItems: 'center', marginTop: 'clamp(20px, 3vh, 40px)' }}>
+      <div style={{ display: 'flex', gap: '24px', alignItems: 'center', marginTop: 'clamp(25px, 3vh, 40px)' }}>
         <button onClick={prev} className="btn-outline" style={{ padding: '10px 24px', fontSize: '14px' }}>
           ←
         </button>
