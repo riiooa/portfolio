@@ -95,7 +95,6 @@ export default function ProjectsSection({ projects }: Props) {
         position: 'relative',
         width: '100%',
         boxSizing: 'border-box',
-        overflowY: 'auto',
         overflowX: 'hidden',
       }}
     >
