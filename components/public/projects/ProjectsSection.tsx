@@ -311,7 +311,7 @@ function ProjectCard({ project, isActive, onClick }: {
       {isActive && (
         <div style={{
           position: 'absolute',
-          bottom: '16px',
+          bottom: '5px',
           right: '16px',
           fontSize: '9px',
           color: 'rgba(255,255,255,0.3)',
