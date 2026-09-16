@@ -87,25 +87,29 @@ export default function ProjectsSection({ projects }: Props) {
       className="section"
       style={{
         minHeight: '100vh',
-        padding: '80px 40px',
+        padding: 'clamp(40px, 6vh, 80px) 5%',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
         position: 'relative',
+        width: '100%',
+        boxSizing: 'border-box',
+        overflowY: 'auto',
+        overflowX: 'hidden',
       }}
     >
       <div className="section-separator" style={{ position: 'absolute', top: 0, left: 0, right: 0 }} />
 
       {/* Header */}
-      <div style={{ textAlign: 'center', marginBottom: '64px' }}>
-        <div style={{ fontSize: '15px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.25em', marginBottom: '16px' }}>
+      <div style={{ textAlign: 'center', marginBottom: 'clamp(24px, 4vh, 64px)' }}>
+        <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.2em', marginBottom: '12px' }}>
           SELECT * FROM projects ORDER BY priority_order ASC
         </div>
-        <h2 style={{ fontSize: 'clamp(36px, 5vw, 64px)', fontWeight: 700, fontFamily: 'var(--font-mono)' }}>
+        <h2 style={{ fontSize: 'clamp(28px, 4vw, 64px)', fontWeight: 700, fontFamily: 'var(--font-mono)', margin: 0 }}>
           <ScrambleText text="THE_VAULT" trigger="always" speed={40} />
         </h2>
-        <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.3)', marginTop: '12px' }}>
+        <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.3)', marginTop: '10px' }}>
           {total} records found // drag or use ← → keys
         </div>
       </div>
@@ -117,7 +121,7 @@ export default function ProjectsSection({ projects }: Props) {
         style={{
           position: 'relative',
           width: '100%',
-          height: '460px',
+          height: 'clamp(340px, 48vh, 460px)',
           maxWidth: '900px',
         }}
         onMouseDown={handleDragStart}
@@ -140,11 +144,11 @@ export default function ProjectsSection({ projects }: Props) {
       </div>
 
       {/* Controls */}
-      <div style={{ display: 'flex', gap: '24px', alignItems: 'center', marginTop: '40px' }}>
+      <div style={{ display: 'flex', gap: '24px', alignItems: 'center', marginTop: 'clamp(20px, 3vh, 40px)' }}>
         <button onClick={prev} className="btn-outline" style={{ padding: '10px 24px', fontSize: '14px' }}>
           ←
         </button>
-        
+
         {/* Dots */}
         <div style={{ display: 'flex', gap: '8px' }}>
           {projects.map((_, i) => (
@@ -171,7 +175,7 @@ export default function ProjectsSection({ projects }: Props) {
 
       {/* Active project metadata */}
       <div style={{
-        marginTop: '32px',
+        marginTop: 'clamp(16px, 2.5vh, 32px)',
         fontFamily: 'var(--font-mono)',
         fontSize: '11px',
         color: 'rgba(255,255,255,0.2)',
