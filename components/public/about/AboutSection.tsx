@@ -45,12 +45,15 @@ export default function AboutSection({ about }: Props) {
       className="section"
       style={{
         minHeight: '100vh',
-        padding: '80px 40px',
+        padding: '80px 5%',
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        width: '100%',
+        boxSizing: 'border-box',
+        overflowX: 'hidden',
       }}
     >
       <div className="section-separator" style={{ position: 'absolute', top: 0, left: 0, right: 0 }} />
@@ -65,16 +68,26 @@ export default function AboutSection({ about }: Props) {
         </h2>
       </div>
 
-      <div style={{ maxWidth: '1100px', width: '100%', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px' }}>
+      <div
+        style={{
+          maxWidth: '1100px',
+          width: '90%',
+          margin: '0 auto',
+          boxSizing: 'border-box',
+          display: 'grid',
+          gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)',
+          gap: '64px',
+        }}
+      >
         {/* Left: System Logs */}
-        <div>
+        <div style={{ minWidth: 0 }}>
           <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.2em', marginBottom: '24px' }}>
             // SYSTEM_LOG — CAREER_TIMELINE
           </div>
 
           <div style={{ fontFamily: 'var(--font-mono)' }}>
             {logs.map((log, i) => (
-              <div key={i} className="log-entry">
+              <div key={i} className="log-entry" style={{ minWidth: 0 }}>
                 <span style={{ color: 'rgb(253, 252, 252)', fontSize: '11px' }}>
                   [{log.timestamp}]
                 </span>
@@ -85,7 +98,7 @@ export default function AboutSection({ about }: Props) {
                 }}>
                   {log.event}
                 </span>
-                <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '12px', lineHeight: 1.5 }}>
+                <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: '12px', lineHeight: 1.5, wordBreak: 'break-word' }}>
                   {log.message}
                 </span>
               </div>
@@ -93,7 +106,7 @@ export default function AboutSection({ about }: Props) {
           </div>
 
           {/* Social Links as JSON */}
-          <div style={{ marginTop: '48px' }}>
+          <div style={{ marginTop: '48px', minWidth: 0 }}>
             <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.2em', marginBottom: '16px' }}>
               // SOCIAL_LINKS — JSON_FORMAT
             </div>
@@ -104,13 +117,17 @@ export default function AboutSection({ about }: Props) {
               fontFamily: 'var(--font-mono)',
               fontSize: '12px',
               lineHeight: 2,
+              boxSizing: 'border-box',
+              width: '100%',
+              overflowWrap: 'anywhere',
+              wordBreak: 'break-word',
             }}>
               <div style={{ color: 'rgba(255,255,255,0.3)' }}>{'{'}</div>
               <div style={{ paddingLeft: '20px' }}>
                 <span style={{ color: 'rgba(255,255,255,0.4)' }}>&quot;socials&quot;</span>
                 <span style={{ color: 'rgb(253, 252, 252)' }}>: {'{'}</span>
                 {socials.map(s => (
-                  <div key={s.key} style={{ paddingLeft: '20px' }}>
+                  <div key={s.key} style={{ paddingLeft: '20px', overflowWrap: 'anywhere', wordBreak: 'break-word' }}>
                     <span style={{ color: 'rgba(255,255,255,0.3)' }}>&quot;{s.key}&quot;</span>
                     <span style={{ color: 'rgba(255,255,255,0.2)' }}>: </span>
                     <a
@@ -121,6 +138,8 @@ export default function AboutSection({ about }: Props) {
                         color: 'rgba(255,255,255,0.7)',
                         textDecoration: 'none',
                         transition: 'color 0.2s ease',
+                        overflowWrap: 'anywhere',
+                        wordBreak: 'break-word',
                       }}
                       onMouseEnter={e => (e.currentTarget.style.color = 'white')}
                       onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.7)')}
@@ -148,14 +167,14 @@ export default function AboutSection({ about }: Props) {
         </div>
 
         {/* Right: Tech Circuits */}
-        <div>
+        <div style={{ minWidth: 0 }}>
           <div style={{ fontSize: '10px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.2em', marginBottom: '24px' }}>
             // TECH_STACK — CIRCUIT_DIAGRAM
           </div>
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(70px, 1fr))',
             gap: '12px',
             marginBottom: '24px',
           }}>
@@ -176,6 +195,9 @@ export default function AboutSection({ about }: Props) {
                     textAlign: 'center',
                     fontFamily: 'var(--font-mono)',
                     cursor: 'none',
+                    minWidth: 0,
+                    boxSizing: 'border-box',
+                    overflowWrap: 'break-word',
                   }}
                 >
                   <div style={{ fontSize: '12px', color: isHovered ? 'white' : isConnected ? 'rgba(255,255,255,0.8)' : 'rgba(255,255,255,0.5)', marginBottom: '4px', fontWeight: 600 }}>
@@ -185,7 +207,7 @@ export default function AboutSection({ about }: Props) {
                     {tech.category}
                   </div>
                   {isHovered && tech.connected_to?.length > 0 && (
-                    <div style={{ fontSize: '8px', color: 'rgba(255,255,255,0.35)', marginTop: '4px' }}>
+                    <div style={{ fontSize: '8px', color: 'rgba(255,255,255,0.35)', marginTop: '4px', overflowWrap: 'break-word' }}>
                       → {tech.connected_to.join(', ')}
                     </div>
                   )}
@@ -205,13 +227,14 @@ export default function AboutSection({ about }: Props) {
             background: 'rgba(255,255,255,0.02)',
             border: '1px solid rgba(255,255,255,0.06)',
             fontFamily: 'var(--font-mono)',
+            boxSizing: 'border-box',
+            width: '100%',
           }}>
             <div style={{ fontSize: '10px', color: 'rgb(253, 252, 252)', letterSpacing: '0.15em', marginBottom: '12px' }}>
               // SYSTEM_INFO
             </div>
             {[
               { key: 'NODE', val: 'Rio Al Fandi' },
-              
               { key: 'UPTIME', val: '<1 years' },
               { key: 'STATUS', val: 'READY_FOR_HIRE' },
               { key: 'LOCATION', val: 'ID_REG-21' },
