@@ -308,18 +308,7 @@ function ProjectCard({ project, isActive, onClick }: {
       </div>
 
       /* {/* Click hint (active only) */}
-      {isActive && (
-        <div style={{
-          position: 'absolute',
-          bottom: '5px',
-          right: '16px',
-          fontSize: '9px',
-          color: 'rgba(255,255,255,0.3)',
-          letterSpacing: '0.1em',
-        }}>
-          CLICK_TO_EXPAND →
-        </div>
-      )} */
+
     </div>
   )
 }
