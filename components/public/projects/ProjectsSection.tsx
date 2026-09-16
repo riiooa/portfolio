@@ -307,7 +307,7 @@ function ProjectCard({ project, isActive, onClick }: {
         )}
       </div>
 
-      {/* Click hint (active only) */}
+      /* {/* Click hint (active only) */}
       {isActive && (
         <div style={{
           position: 'absolute',
@@ -319,7 +319,7 @@ function ProjectCard({ project, isActive, onClick }: {
         }}>
           CLICK_TO_EXPAND →
         </div>
-      )}
+      )} */
     </div>
   )
 }
