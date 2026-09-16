@@ -62,7 +62,7 @@ export default function ProjectsSection({ projects }: Props) {
     const absPos = Math.abs(pos)
     if (absPos > 2) return { display: 'none' }
 
-    const translateX = pos * 280
+    const translateX = pos * 240
     const rotateY = pos * -25
     const scale = pos === 0 ? 1 : 0.78
     const opacity = pos === 0 ? 1 : absPos === 1 ? 0.5 : 0.2
@@ -206,9 +206,9 @@ function ProjectCard({ project, isActive, onClick }: {
       style={{
         background: 'var(--gray-950)',
         border: `1px solid ${isActive ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.06)'}`,
-        padding: '32px',
-        width: '300px',
-        height: '420px',
+        padding: '24px',
+        width: '260px',
+        height: '380px',
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
