@@ -106,7 +106,7 @@ export default function ProjectsSection({ projects }: Props) {
         <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.2em', marginBottom: '12px' }}>
           SELECT * FROM projects ORDER BY priority_order ASC
         </div>
-        <h2 style={{ fontSize: 'clamp(28px, 4vw, 64px)', fontWeight: 700, fontFamily: 'var(--font-mono)', margin: 0 }}>
+        <h2 style={{ fontSize: 'clamp(28px, 4vw, 64px)', fontWeight: 500, fontFamily: 'var(--font-mono)', margin: 0 }}>
           <ScrambleText text="THE_VAULT" trigger="always" speed={40} />
         </h2>
         <div style={{ fontSize: '12px', color: 'rgba(255,255,255,0.3)', marginTop: '10px' }}>
